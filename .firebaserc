@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "soc-coding-assignment": {
+      "hosting": {
+        "soc-app": [
+          "soc-coding-assignment"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "soc-coding-assignment"
+  }
+}
