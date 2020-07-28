@@ -11,7 +11,7 @@ export class EmploymentFieldComponent implements OnInit {
   employer = new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z ]*')]);
   title = new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z ]*')]);
   desc = new FormControl('',[Validators.required, Validators.pattern('[[^A-Za-z0-9]+')]);
-  num = 1; //will be set in constructor
+  num;
 
   constructor() { }
 

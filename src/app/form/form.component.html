@@ -1,4 +1,5 @@
 <div class = "form-container">
+  <mat-divider></mat-divider>
   <h2>Create new user</h2>
 
   <h3> Personal information</h3>
@@ -33,8 +34,9 @@
     </mat-form-field>
 
     <!--Phone Number Field-->
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" (focus)="togglePrefix()">
       <mat-label>Phone number</mat-label>
+      <span matPrefix class="prefix-hidden">+1 &nbsp;</span>
       <input matInput placeholder="2064275234" [formControl]="phoneNumber" required>
       <mat-icon matSuffix>phone</mat-icon>
       <mat-hint>Include area code</mat-hint>
@@ -54,16 +56,29 @@
     <h3>Employment History</h3>
 
     <!--Employment History Fields-->
-    <app-employment-field></app-employment-field>
-
-    
-
+    <div class="history">
+      <ng-container *ngFor="let item of employmentFields">
+        <app-employment-field num=item></app-employment-field>
+      </ng-container>
+      <button mat-raised-button (click)="createNewEmployment()">Add Employer</button>
+    </div>
 
     <h3>Other Experiences</h3>
 
     <!--Experience Fields-->
-    <app-experience-field></app-experience-field>
-    
+    <div class="history">
+      <ng-container *ngFor="let item of experienceFields">
+        <app-experience-field num=item></app-experience-field>
+      </ng-container>
+      <button mat-raised-button (click)="createNewExperience()">Add Experience</button>
+    </div>
 
+    <mat-divider></mat-divider>
+    
+    <div class="createUser">
+      <button mat-raised-button (click)="createUser()">Add User</button>
+    </div>
+   
+    
 </div>
        

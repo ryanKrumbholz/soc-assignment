@@ -8,6 +8,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class ExperienceFieldComponent implements OnInit {
   employer = new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z ]*')]);
+  num;
 
   constructor() { }
 

@@ -18,6 +18,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
 import { EmploymentFieldComponent } from './employment-field/employment-field.component';
 import { ExperienceFieldComponent } from './experience-field/experience-field.component';
 
@@ -45,7 +46,8 @@ import { ExperienceFieldComponent } from './experience-field/experience-field.co
     MatDatepickerModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

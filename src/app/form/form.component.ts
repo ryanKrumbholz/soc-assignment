@@ -13,6 +13,8 @@ export class FormComponent implements OnInit {
   uname = new FormControl('',[Validators.required, Validators.pattern('[[^A-Za-z0-9]+')]);
   email = new FormControl('', [Validators.required, Validators.email]);
   phoneNumber = new FormControl('', [Validators.required, Validators.min(10), Validators.pattern('^[0-9]*$')]);
+  employmentFields = [];
+  experienceFields = [];
 
   constructor() { }
 
@@ -31,6 +33,24 @@ export class FormComponent implements OnInit {
 
     //define error case and messages for pattern error
 
+  }
+
+  createNewExperience() {
+    const len = this.experienceFields.length;
+    this.experienceFields.push(len + 1);
+  }
+
+  createNewEmployment() {
+    const len = this.employmentFields.length;
+    this.employmentFields.push(len + 1);
+  }
+
+  createUser() {
+
+  }
+
+  togglePrefix() {
+    console.log("gg")
   }
 
 }
