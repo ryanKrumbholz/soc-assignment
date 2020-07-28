@@ -14,15 +14,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { DisplayUserComponent } from './display-user/display-user.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { EmploymentFieldComponent } from './employment-field/employment-field.component';
+import { ExperienceFieldComponent } from './experience-field/experience-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     FormComponent,
-    SearchbarComponent,
+    SearchbarComponent, 
     CreateUserComponent,
-    DisplayUserComponent
+    DisplayUserComponent,
+    EmploymentFieldComponent,
+    ExperienceFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,11 @@ import { DisplayUserComponent } from './display-user/display-user.component';
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,69 @@
 <div class = "form-container">
   <h2>Create new user</h2>
+
+  <h3> Personal information</h3>
+
+    <!--First Name Field-->
     <mat-form-field appearance="fill">
-        <mat-label>Enter you Username</mat-label>
-        <input matInput placeholder="Cool_Username123">
-      </mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="ex. coolguy1234" [formControl]="uname" required>
+      <mat-error *ngIf="uname.invalid">{{getErrorMessage(uname)}}</mat-error>
+    </mat-form-field>
+
+    <!--Last Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="ex. John" [formControl]="firstName" required>
+      <mat-error *ngIf="firstName.invalid">{{getErrorMessage(firstName)}}</mat-error>
+    </mat-form-field>
+
+    <!--Username Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="ex. Doe" [formControl]="lastName" required>
+      <mat-error *ngIf="lastName.invalid">{{getErrorMessage(lastName)}}</mat-error>
+    </mat-form-field>
+
+    <!--Email Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Email Address</mat-label>
+      <input matInput placeholder="jd@example.com" [formControl]="email" required>
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+    </mat-form-field>
+
+    <!--Phone Number Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Phone number</mat-label>
+      <input matInput placeholder="2064275234" [formControl]="phoneNumber" required>
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-hint>Include area code</mat-hint>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage(phoneNumber)}}</mat-error>
+    </mat-form-field>
+    
+
+    <!--DOB Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Date of birth</mat-label>
+      <input matInput placeholder="2064275234" [formControl]="phoneNumber" required>
+      <!-- <input matInput [matDatepicker]="picker">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker> -->
+    </mat-form-field>
+
+    <h3>Employment History</h3>
+
+    <!--Employment History Fields-->
+    <app-employment-field></app-employment-field>
+
+    
+
+
+    <h3>Other Experiences</h3>
+
+    <!--Experience Fields-->
+    <app-experience-field></app-experience-field>
+    
+
 </div>
        

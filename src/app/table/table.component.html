@@ -1,10 +1,12 @@
 <div class="table-container">
-  <app-searchbar></app-searchbar>
+  <div class="table-controls">
+    <app-searchbar></app-searchbar>
+    <button mat-fab color="primary" aria-label="create new user" size="50">
+      <mat-icon>create</mat-icon>
+    </button>
+  </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-      <ng-container >
-        <h2>gg</h2>
-      </ng-container>
       <!--Name-->      
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Name </th>

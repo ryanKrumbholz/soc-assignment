@@ -1,0 +1,21 @@
+<!--Title Field-->
+<mat-form-field appearance="fill">
+    <mat-label>Employer Name</mat-label>
+    <input matInput placeholder="ex. Student Opportunity Center" [formControl]="employer" required>
+    <mat-error *ngIf="employer.invalid">{{getErrorMessage(employer)}}</mat-error>
+</mat-form-field>
+
+<!--Date Picker-->
+<mat-form-field appearance="fill">
+    <mat-label>End Date</mat-label>
+    <input matInput placeholder="2064275234" required>
+    <!-- <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker> -->
+  </mat-form-field>
+
+<!--Description Field-->
+<mat-form-field appearance="fill" class="desc">
+    <mat-label>Description</mat-label>
+    <textarea matInput></textarea>
+</mat-form-field>
