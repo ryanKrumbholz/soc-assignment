@@ -18,7 +18,6 @@ export class EmploymentFieldComponent implements OnInit {
   
   @Input() data;
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -45,7 +44,7 @@ export class EmploymentFieldComponent implements OnInit {
 
   }
 
-  checkboxOnSelect() {  
+  checkboxOnSelect() {
     this.status = !this.status;
     (!this.status) ? (this.endDate.disable(), this.endDate.value = 'present') : this.endDate.enable();
   }

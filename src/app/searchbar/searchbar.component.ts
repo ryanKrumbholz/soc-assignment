@@ -10,8 +10,6 @@ import {DBService} from '../db-service.service';
   styleUrls: ['./searchbar.component.sass']
 })
 
-
-
 export class SearchbarComponent implements OnInit {
 
   myControl = new FormControl();
