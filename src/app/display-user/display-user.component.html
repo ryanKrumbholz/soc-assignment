@@ -1,3 +1,60 @@
-<div class="window-container">
-
+<div [ngClass]="active ? 'bg' : 'bg-hidden'" >
+    <div class="window-container">
+        <button mat-icon-button (click)="close()" class="close">
+            <mat-icon>close</mat-icon>
+          </button>
+          <ng-container *ngIf="user">
+          <div class="data">
+            <h2>Username: {{user.uname}}</h2>
+            <h2>First Name: {{user.firstName}}</h2>
+            <h2>Last Name: {{user.lastName}}</h2>
+            <h2>Email Address: {{user.email}}</h2>
+            <h2>Phone Number: {{user.phoneNumber}}</h2>
+            <h2>Address: {{user.unitNumber ? user.addressLine + ", " + user.unitNumber + ", " + user.city
+              + ", " + user.state + ", " + user.zip: user.addressLine + ", " + user.city
+              + ", " + user.state + ", " + user.zip}}</h2>
+            <h2>Age: {{user.age}}</h2>
+            <h2>Employment History</h2>
+            <ng-container *ngFor="let employer of user.employers">
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    {{employer.employer}} - {{employer.title}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{formatDate(employer.startDate)}} - {{formatDate(employer.endDate)}}
+                    </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Description:</p>
+                    <p>{{employer.desc}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </ng-container>
+            <h2>Other Experience</h2>
+            <ng-container *ngFor="let experience of user.experiences"\>
+                <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                    <mat-panel-title>
+                    {{experience.title}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                    {{formatDate(experience.date)}}
+                    </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Description:</p>
+                    <p>{{experience.desc}}</p>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </ng-container>
+          </div>
+        </ng-container>
+          <button mat-raised-button color="warn" (click)="delUser()" class="delUser">
+            Delete User
+          </button>
+    </div> 
 </div>
+

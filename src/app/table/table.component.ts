@@ -1,52 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-
-export interface Experience {
-  title: string;
-  desc: string;
-  date: Date;
-}
-
-export interface EmploymentHistory {
-  employerName: string;
-  title: string;
-  startDate: Date;
-  endDate: Date;
-  status: boolean;
-  desc: string;
-}
-
-export interface User {
-  name: string;
-  address: string;
-  phoneNumber: string;
-  email: string;
-  age: Number;
-  // experience: Experience;
-  // employmentHistory: EmploymentHistory;
-}
-
-const USER_DATA: User[] = [{
-  name: 'Ryan K', 
-  address: 'Washington, DC', 
-  phoneNumber: '206-427-5234', 
-  email: 'krumbholz98@gmail.com',
-  age: 21
-},
-{
-  name: 'test', 
-  address: 'test', 
-  phoneNumber: 'test', 
-  email: 'test',
-  age: 1
-}];
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import {InterfaceService} from '../interface-service.service';
+import {MatTableDataSource} from '@angular/material/table';
+import {DBService} from '../db-service.service';
 
 @Component({
   selector: 'app-table',
@@ -55,17 +10,30 @@ export interface PeriodicElement {
 })
 
 export class TableComponent implements OnInit{
-  displayedColumns: string[] = ['name', 'address',
-   'email', 'phoneNumber', 'age'];
-  dataSource = USER_DATA;
+  displayedColumns: string[] = ['name', 'city',
+   'email', 'phoneNumber'];
+  dataSource = new MatTableDataSource([]);
 
-  constructor() { }
+  constructor(private state: InterfaceService, private data: DBService) {
+    data.getUsers().subscribe(users => this.dataSource = new MatTableDataSource(users));
+   }
 
   ngOnInit(): void {
   }
 
+  showUser(user) {
+    this.state.setUser(user);
+    this.state.toggleUserWindow();
+    window.location.href='#bottom';
+  }
+
   showForm() {
-    //change form component class name to form-container
+    this.state.toggleForms();
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

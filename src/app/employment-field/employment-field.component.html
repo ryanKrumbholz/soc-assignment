@@ -1,6 +1,13 @@
 <div class="employment-field">
 
-    <p>Employer {{num}}</p>
+    <div class="header">
+        <p>{{(employer.value) ? employer.value : "New Employer"}}</p>
+
+        <button class="delete" mat-icon-button (click)="delete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+    
 
     <!--Employer Name Field-->
     <mat-form-field appearance="fill">
@@ -19,29 +26,30 @@
     <!--Start Date Picker-->
     <mat-form-field appearance="fill">
         <mat-label>Start Date</mat-label>
-        <input matInput placeholder="2064275234" required>
-        <!-- <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker> -->
+        <input matInput [matDatepicker]="startDatePicker" [formControl]="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+        <mat-error *ngIf="startDate.invalid">{{getErrorMessage(startDate)}}</mat-error>
       </mat-form-field>
 
     <!--End Date Picker-->
     <mat-form-field appearance="fill">
         <mat-label>End Date</mat-label>
-        <input matInput placeholder="2064275234" required>
-        <!-- <input matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker> -->
+        <input matInput [matDatepicker]="endDatePicker" [formControl]="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+        <mat-error *ngIf="endDate.invalid">{{getErrorMessage(endDate)}}</mat-error>
       </mat-form-field>
 
     <!--Status Checkbox-->
-    <mat-checkbox class="status-checkbox">Current Employer</mat-checkbox>
+    <mat-checkbox class="status-checkbox" (change)="checkboxOnSelect()">Current Employer</mat-checkbox>
 
     <!--Description Field-->
     <br>
     <mat-form-field appearance="fill" class="desc">
         <mat-label>Description</mat-label>
-        <textarea matInput mat-autosize required></textarea>
+        <textarea matInput mat-autosize  [formControl]="desc" required></textarea>
+        <mat-error *ngIf="desc.invalid">{{getErrorMessage(desc)}}</mat-error>
     </mat-form-field>
 
 </div>

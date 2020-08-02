@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 
 @Component({
@@ -7,26 +7,46 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./experience-field.component.sass']
 })
 export class ExperienceFieldComponent implements OnInit {
-  employer = new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z ]*')]);
-  num;
+  title;
+  desc;
+  date;
+  elem;
+  arr;
+  
+  @Input() data;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.elem = this.data[0].controls;
+    this.arr = this.data[1].controls;
+    this.title = this.elem.title;
+    this.desc = this.elem.desc;
+    this.date = this.elem.date;
   }
 
-  getErrorMessage(type: FormControl) {
-  
-    if (type.hasError('required')) {
-      return 'Field incomplete!';
-    }
+  getErrorMessage(type?: FormControl) {
 
-    if (type.hasError('email')) {
-      return 'Not a valid email';
-    }
+    if(type.errors.pattern) {return 'Field contains unsupported characters!'};
 
-    //define error case and messages for pattern error
+    if (type.errors.required) {return 'Field is required!'};
+
+    if (type.errors.minLength) {return 'Field length is too short!'};
+
+    if (type.errors.maxLength) {return 'Field length exceeds maximum length!'};
+
+    if (type.errors.email) { return 'Not a valid email!'};
 
   }
+
+  formatDate(data) {
+    return data ? data.getMonth() + 1 + '/' + data.getDate() + '/' +  data.getFullYear() : 'Present';
+  }
+
+  delete() {
+    let index = this.arr.indexOf(this.elem);
+    this.arr = this.arr.splice(index, 1);
+  }
+
 
 }

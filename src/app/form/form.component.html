@@ -1,64 +1,150 @@
-<div class = "form-container">
+<div [ngClass]= " active ? 'form-container' : 'form-container-hidden'">
   <mat-divider></mat-divider>
   <h2>Create new user</h2>
 
   <h3> Personal information</h3>
 
-    <!--First Name Field-->
-    <mat-form-field appearance="fill">
-      <mat-label>Username</mat-label>
-      <input matInput placeholder="ex. coolguy1234" [formControl]="uname" required>
-      <mat-error *ngIf="uname.invalid">{{getErrorMessage(uname)}}</mat-error>
+  <form [formGroup]="userForm"> 
+
+     <!--First Name Field-->
+     <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="ex. John" formControlName="firstName" required>
+      <mat-error *ngIf="userForm.controls.firstName.invalid">{{getErrorMessage(userForm.controls.firstName)}}</mat-error>
     </mat-form-field>
 
-    <!--Last Field-->
+    <!--Last Name Field-->
     <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput placeholder="ex. John" [formControl]="firstName" required>
-      <mat-error *ngIf="firstName.invalid">{{getErrorMessage(firstName)}}</mat-error>
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="ex. Doe" formControlName="lastName" required>
+      <mat-error *ngIf="userForm.controls.lastName.invalid">{{getErrorMessage(userForm.controls.lastName)}}</mat-error>
     </mat-form-field>
 
     <!--Username Field-->
     <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput placeholder="ex. Doe" [formControl]="lastName" required>
-      <mat-error *ngIf="lastName.invalid">{{getErrorMessage(lastName)}}</mat-error>
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="ex. coolguy1234" formControlName="uname" required>
+      <mat-error *ngIf="userForm.controls.uname.invalid">{{getErrorMessage(userForm.controls.uname)}}</mat-error>
     </mat-form-field>
 
     <!--Email Field-->
     <mat-form-field appearance="fill">
       <mat-label>Email Address</mat-label>
-      <input matInput placeholder="jd@example.com" [formControl]="email" required>
+      <input matInput placeholder="jd@example.com" formControlName="email" required>
       <mat-icon matSuffix>email</mat-icon>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage(email)}}</mat-error>
+      <mat-error *ngIf="userForm.controls.email.invalid">{{getErrorMessage(userForm.controls.email)}}</mat-error>
     </mat-form-field>
 
     <!--Phone Number Field-->
-    <mat-form-field appearance="fill" (focus)="togglePrefix()">
+    <mat-form-field appearance="fill">
       <mat-label>Phone number</mat-label>
       <span matPrefix class="prefix-hidden">+1 &nbsp;</span>
-      <input matInput placeholder="2064275234" [formControl]="phoneNumber" required>
+      <input matInput placeholder="2064275234" formControlName="phoneNumber" required>
       <mat-icon matSuffix>phone</mat-icon>
       <mat-hint>Include area code</mat-hint>
-      <mat-error *ngIf="email.invalid">{{getErrorMessage(phoneNumber)}}</mat-error>
+      <mat-error *ngIf="userForm.controls.phoneNumber.invalid">{{getErrorMessage(userForm.controls.phoneNumber)}}</mat-error>
+    </mat-form-field>
+
+    <!--Street Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Address Line</mat-label>
+      <input matInput placeholder="1330 Boren Ave" formControlName="addressLine" required>
+      <mat-error *ngIf="userForm.controls.addressLine.invalid">{{getErrorMessage(userForm.controls.addressLine)}}</mat-error>
+    </mat-form-field>
+
+    <!--Unit Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Unit Number</mat-label>
+      <input matInput placeholder="Unit 3B" formControlName="unitNumber">
+      <mat-error *ngIf="userForm.controls.unitNumber.invalid">{{getErrorMessage(userForm.controls.unitNumber)}}</mat-error>
+    </mat-form-field>
+
+    <!--City Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="Seattle" formControlName="city" required>
+      <mat-error *ngIf="userForm.controls.city.invalid">{{getErrorMessage(userForm.controls.city)}}</mat-error>
+    </mat-form-field>
+
+    <!--State Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <mat-select formControlName="state">
+        <mat-option value="AL">Alabama</mat-option>
+        <mat-option value="AK">Alaska</mat-option>
+        <mat-option value="AZ">Arizona</mat-option>
+        <mat-option value="AR">Arkansas</mat-option>
+        <mat-option value="CA">California</mat-option>
+        <mat-option value="CO">Colorado</mat-option>
+        <mat-option value="CT">Connecticut</mat-option>
+        <mat-option value="DE">Delaware</mat-option>
+        <mat-option value="DC">District Of Columbia</mat-option>
+        <mat-option value="FL">Florida</mat-option>
+        <mat-option value="GA">Georgia</mat-option>
+        <mat-option value="HI">Hawaii</mat-option>
+        <mat-option value="ID">Idaho</mat-option>
+        <mat-option value="IL">Illinois</mat-option>
+        <mat-option value="IN">Indiana</mat-option>
+        <mat-option value="IA">Iowa</mat-option>
+        <mat-option value="KS">Kansas</mat-option>
+        <mat-option value="KY">Kentucky</mat-option>
+        <mat-option value="LA">Louisiana</mat-option>
+        <mat-option value="ME">Maine</mat-option>
+        <mat-option value="MD">Maryland</mat-option>
+        <mat-option value="MA">Massachusetts</mat-option>
+        <mat-option value="MI">Michigan</mat-option>
+        <mat-option value="MN">Minnesota</mat-option>
+        <mat-option value="MS">Mississippi</mat-option>
+        <mat-option value="MO">Missouri</mat-option>
+        <mat-option value="MT">Montana</mat-option>
+        <mat-option value="NE">Nebraska</mat-option>
+        <mat-option value="NV">Nevada</mat-option>
+        <mat-option value="NH">New Hampshire</mat-option>
+        <mat-option value="NJ">New Jersey</mat-option>
+        <mat-option value="NM">New Mexico</mat-option>
+        <mat-option value="NY">New York</mat-option>
+        <mat-option value="NC">North Carolina</mat-option>
+        <mat-option value="ND">North Dakota</mat-option>
+        <mat-option value="OH">Ohio</mat-option>
+        <mat-option value="OK">Oklahoma</mat-option>
+        <mat-option value="OR">Oregon</mat-option>
+        <mat-option value="PA">Pennsylvania</mat-option>
+        <mat-option value="RI">Rhode Island</mat-option>
+        <mat-option value="SC">South Carolina</mat-option>
+        <mat-option value="SD">South Dakota</mat-option>
+        <mat-option value="TN">Tennessee</mat-option>
+        <mat-option value="TX">Texas</mat-option>
+        <mat-option value="UT">Utah</mat-option>
+        <mat-option value="VT">Vermont</mat-option>
+        <mat-option value="VA">Virginia</mat-option>
+        <mat-option value="WA">Washington</mat-option>
+        <mat-option value="WV">West Virginia</mat-option>
+        <mat-option value="WI">Wisconsin</mat-option>
+        <mat-option value="WY">Wyoming</mat-option>
+      </mat-select>
+      <mat-error *ngIf="userForm.controls.state.invalid">{{getErrorMessage(userForm.controls.state)}}</mat-error>
+    </mat-form-field>
+
+    <!--Zip Field-->
+    <mat-form-field appearance="fill">
+      <mat-label>Zip Code</mat-label>
+      <input matInput placeholder="20011" formControlName="zip" required>
+      <mat-error *ngIf="userForm.controls.zip.invalid">{{getErrorMessage(userForm.controls.zip)}}</mat-error>
     </mat-form-field>
     
-
-    <!--DOB Field-->
+    <!--Age Field-->
     <mat-form-field appearance="fill">
-      <mat-label>Date of birth</mat-label>
-      <input matInput placeholder="2064275234" [formControl]="phoneNumber" required>
-      <!-- <input matInput [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker> -->
+      <mat-label>Age</mat-label>
+      <input matInput placeholder="21" formControlName="age" required>
+      <mat-error *ngIf="userForm.controls.age.invalid">{{getErrorMessage(userForm.controls.age)}}</mat-error>
     </mat-form-field>
 
     <h3>Employment History</h3>
 
     <!--Employment History Fields-->
-    <div class="history">
-      <ng-container *ngFor="let item of employmentFields">
-        <app-employment-field num=item></app-employment-field>
+    <div class="history" formArrayName="employers">
+      <ng-container *ngFor="let employer of employers.controls; let i=index">
+        <app-employment-field [data]="[employer, employers]" [formGroupName]="i"></app-employment-field>
       </ng-container>
       <button mat-raised-button (click)="createNewEmployment()">Add Employer</button>
     </div>
@@ -66,17 +152,19 @@
     <h3>Other Experiences</h3>
 
     <!--Experience Fields-->
-    <div class="history">
-      <ng-container *ngFor="let item of experienceFields">
-        <app-experience-field num=item></app-experience-field>
+    <div class="history" formArrayName="experiences">
+      <ng-container *ngFor="let experience of experiences.controls; let i=index">
+        <app-experience-field [data]="[experience, experiences]" [formGroupName]="i"></app-experience-field>
       </ng-container>
       <button mat-raised-button (click)="createNewExperience()">Add Experience</button>
     </div>
 
+    </form>
+
     <mat-divider></mat-divider>
     
     <div class="createUser">
-      <button mat-raised-button (click)="createUser()">Add User</button>
+      <button mat-raised-button (click)="onSubmit()" type="submit" [disabled]="userForm.invalid">Add User</button>
     </div>
    
     

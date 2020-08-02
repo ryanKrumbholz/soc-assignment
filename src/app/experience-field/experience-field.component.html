@@ -1,25 +1,34 @@
 <div class="experience-field">
-    <p>Experience {{num}}</p>
+
+    <div class="header">
+        <p>{{(title.value) ? title.value : "New Experience"}}</p>
+
+        <button class="delete" mat-icon-button (click)="delete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+
     <!--Title Field-->
     <mat-form-field appearance="fill">
-        <mat-label>Employer Name</mat-label>
-        <input matInput placeholder="ex. Student Opportunity Center" [formControl]="employer" required>
-        <mat-error *ngIf="employer.invalid">{{getErrorMessage(employer)}}</mat-error>
+        <mat-label>Experience Name</mat-label>
+        <input matInput placeholder="ex. Cool App I made." [formControl]="title" required>
+        <mat-error *ngIf="title.invalid">{{getErrorMessage(title)}}</mat-error>
     </mat-form-field>
 
     <!--Date Picker-->
     <mat-form-field appearance="fill">
-        <mat-label>End Date</mat-label>
-        <input matInput placeholder="2064275234" required>
-        <!-- <input matInput [matDatepicker]="picker">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker> -->
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="date.invalid">{{getErrorMessage(date)}}</mat-error>
     </mat-form-field>
 
     <!--Description Field-->
     <br>
     <mat-form-field appearance="fill" class="desc">
         <mat-label>Description</mat-label>
-        <textarea matInput mat-autosize required></textarea>
+        <textarea matInput mat-autosize [formControl]="desc" required></textarea>
+        <mat-error *ngIf="desc.invalid">{{getErrorMessage(desc)}}</mat-error>
     </mat-form-field>
 </div>
