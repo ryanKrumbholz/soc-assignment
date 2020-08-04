@@ -39,14 +39,15 @@ export class FormComponent implements OnInit {
   }
 
   getErrorMessage(type?: FormControlName) {
+    
 
     if(type.errors.pattern) {return 'Field contains unsupported characters!'};
 
     if (type.errors.required) {return 'Field is required!'};
 
-    if (type.errors.minLength) {return 'Field length is too short!'};
+    if (type.errors.minlength) {return 'Field length is too short!'};
 
-    if (type.errors.maxLength) {return 'Field length exceeds maximum length!'};
+    if (type.errors.maxlength) {return 'Field length exceeds maximum length!'};
 
     if (type.errors.email) { return 'Not a valid email!'};
 
