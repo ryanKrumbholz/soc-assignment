@@ -51,7 +51,7 @@ export class EmploymentFieldComponent implements OnInit {
 
   delete() {
     let index = this.arr.indexOf(this.elem);
-    this.arr = this.arr.splice(index, 1);
+    this.arr.splice(index, 1);
   }
 
 }
